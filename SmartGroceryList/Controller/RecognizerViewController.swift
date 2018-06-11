@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Vision
 
 // MARK: - RecognizerViewController: UIViewController
 
@@ -66,11 +67,10 @@ class RecognizerViewController: UIViewController {
 
     // MARK: Private
 
-    private func setupPrediction(prediction: String, image: UIImage) {
+    private func setupPrediction(prediction: String) {
         predictionView.predictionResultLabel.text = prediction
         predictionView.isHidden = false
         photoSourceView.isHidden = true
-        imageView.image = image
 
         currentPrediction = prediction
     }
@@ -85,11 +85,36 @@ class RecognizerViewController: UIViewController {
 
     private let classifier = MobileNet()
 
-    private func recognize(image: UIImage) -> String? {
+    private func classifyFood(image: UIImage) {
 
-        guard let buffer = ImageToPixelBufferConverter.convertToPixelBuffer(image: image) else { return nil }
+        let model = try! VNCoreMLModel(for: self.classifier.model)
+        let request = VNCoreMLRequest(model: model, completionHandler: self.handleFoodClassificationResult)
 
-        return try? self.classifier.prediction(image: buffer).classLabel
+        let cgImage = image.cgImage!
+        let cgOrientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!
+
+        let handler = VNImageRequestHandler(cgImage: cgImage, orientation: cgOrientation)
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            try! handler.perform([request])
+        }
+    }
+
+    private func handleFoodClassificationResult(for request: VNRequest, error: Error?) {
+
+        DispatchQueue.main.async {
+            if let error = error {
+                print(error)
+                self.showRecognitionFailureAlert()
+                return
+            }
+
+            guard let result = request.results?.lazy.flatMap({ $0 as? VNClassificationObservation }).first else {
+                fatalError("No classification observation")
+            }
+
+            self.setupPrediction(prediction: result.identifier)
+        }
     }
 
     private func showRecognitionFailureAlert() {
@@ -131,12 +156,9 @@ extension RecognizerViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let imageSelected = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.contentMode = .scaleAspectFit
+            imageView.image = imageSelected
 
-            if let topPrediction = recognize(image: imageSelected) {
-                setupPrediction(prediction: topPrediction, image: imageSelected)
-            } else {
-                showRecognitionFailureAlert()
-            }
+            self.classifyFood(image: imageSelected)
         }
 
         dismiss(animated: true, completion: nil)
