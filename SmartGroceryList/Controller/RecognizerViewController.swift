@@ -9,6 +9,26 @@
 import UIKit
 import Vision
 
+extension VNImageRequestHandler {
+
+    convenience init?(image: UIImage, options: [VNImageOption: Any] = [:]) {
+
+        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue)) else { return nil }
+
+        if let cgImage = image.cgImage {
+            self.init(cgImage: cgImage, orientation: orientation, options: options)
+            return
+        }
+
+        if let ciImage = image.ciImage {
+            self.init(ciImage: ciImage, orientation: orientation, options: options)
+            return
+        }
+
+        return nil
+    }
+}
+
 // MARK: - RecognizerViewController: UIViewController
 
 class RecognizerViewController: UIViewController {
@@ -90,10 +110,7 @@ class RecognizerViewController: UIViewController {
         let model = try! VNCoreMLModel(for: self.classifier.model)
         let request = VNCoreMLRequest(model: model, completionHandler: self.handleFoodClassificationResult)
 
-        let cgImage = image.cgImage!
-        let cgOrientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!
-
-        let handler = VNImageRequestHandler(cgImage: cgImage, orientation: cgOrientation)
+        let handler = VNImageRequestHandler(image: image)!
 
         DispatchQueue.global(qos: .userInitiated).async {
             try! handler.perform([request])
