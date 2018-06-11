@@ -2,8 +2,8 @@
 > Use Apple's Core ML Framework in Your iOS Apps
 
 ### TODO:
-- [ ] Setup initial SmartGroceryList app
-- [ ] Update SmartGroceryList app to use raw CoreML model
+- [x] Setup initial SmartGroceryList app
+- [x] Update SmartGroceryList app to use raw CoreML model
 - [ ] Update SmartGroceryList app to use Vision with CoreML model
 - [ ] Update SmartGroceryList app to use a custom model converted to CoreML
 - [ ] Build app for dog breed classification using AIND model
