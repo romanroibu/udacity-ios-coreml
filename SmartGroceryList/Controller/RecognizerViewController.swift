@@ -83,8 +83,13 @@ class RecognizerViewController: UIViewController {
         currentPrediction = nil
     }
 
+    private let classifier = MobileNet()
+
     private func recognize(image: UIImage) -> String? {
-        return nil //TODO
+
+        guard let buffer = ImageToPixelBufferConverter.convertToPixelBuffer(image: image) else { return nil }
+
+        return try? self.classifier.prediction(image: buffer).classLabel
     }
 
     private func showRecognitionFailureAlert() {
