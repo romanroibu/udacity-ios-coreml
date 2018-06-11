@@ -4,7 +4,7 @@
 ### TODO:
 - [x] Setup initial SmartGroceryList app
 - [x] Update SmartGroceryList app to use raw CoreML model
-- [ ] Update SmartGroceryList app to use Vision with CoreML model
+- [x] Update SmartGroceryList app to use Vision with CoreML model
 - [ ] Update SmartGroceryList app to use a custom model converted to CoreML
 - [ ] Build app for dog breed classification using AIND model
 - [ ] Build app for facial key point detection using AIND model
