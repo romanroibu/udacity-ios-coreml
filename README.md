@@ -8,5 +8,6 @@
 - [x] Update SmartGroceryList app to use a custom model converted to CoreML
 - [ ] Build app for dog breed classification using AIND model
 - [ ] Build app for facial key point detection using AIND model
+- [ ] Update dog breed app with model trained with CreateML
 - [ ] Build Flashcards challenge app
 - [ ] Prototype a typed wrapper around Vision and CoreML models
