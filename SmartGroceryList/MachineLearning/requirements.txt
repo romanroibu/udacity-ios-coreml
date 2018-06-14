@@ -1,0 +1,7 @@
+tensorflow==1.0.0
+keras==1.2.2
+coremltools
+jupyter
+pillow
+h5py
+wget
