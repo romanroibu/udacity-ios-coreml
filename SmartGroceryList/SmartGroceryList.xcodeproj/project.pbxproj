@@ -60,6 +60,7 @@
 		022132281F2BCA040077DE41 /* SmartGroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				30E4850420D2FE380025CFFC /* MachineLearning */,
 				30A7112D20CF1EF70035A98F /* Application */,
 				A947C0601F327452004E2EA5 /* Controller */,
 				026D1BBE1F2FB554008588FB /* View */,
@@ -84,9 +85,16 @@
 				0221322F1F2BCA040077DE41 /* Main.storyboard */,
 				022132341F2BCA040077DE41 /* LaunchScreen.storyboard */,
 				022132321F2BCA040077DE41 /* Assets.xcassets */,
-				30A7112E20CF23470035A98F /* MobileNet.mlmodel */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		30E4850420D2FE380025CFFC /* MachineLearning */ = {
+			isa = PBXGroup;
+			children = (
+				30A7112E20CF23470035A98F /* MobileNet.mlmodel */,
+			);
+			path = MachineLearning;
 			sourceTree = "<group>";
 		};
 		A947C0601F327452004E2EA5 /* Controller */ = {
