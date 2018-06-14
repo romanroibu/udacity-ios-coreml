@@ -15,6 +15,7 @@
 		0221323E1F2BD5930077DE41 /* GroceryItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0221323D1F2BD5930077DE41 /* GroceryItemTableViewCell.swift */; };
 		026D1B981F2F36E8008588FB /* PredictionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026D1B971F2F36E8008588FB /* PredictionView.swift */; };
 		30A7112F20CF23470035A98F /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 30A7112E20CF23470035A98F /* MobileNet.mlmodel */; };
+		30E4850620D30EFB0025CFFC /* Food101Net.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 30E4850520D30EFB0025CFFC /* Food101Net.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0221323D1F2BD5930077DE41 /* GroceryItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItemTableViewCell.swift; sourceTree = "<group>"; };
 		026D1B971F2F36E8008588FB /* PredictionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictionView.swift; sourceTree = "<group>"; };
 		30A7112E20CF23470035A98F /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		30E4850520D30EFB0025CFFC /* Food101Net.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Food101Net.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				30A7112E20CF23470035A98F /* MobileNet.mlmodel */,
+				30E4850520D30EFB0025CFFC /* Food101Net.mlmodel */,
 			);
 			path = MachineLearning;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0221322E1F2BCA040077DE41 /* RecognizerViewController.swift in Sources */,
+				30E4850620D30EFB0025CFFC /* Food101Net.mlmodel in Sources */,
 				30A7112F20CF23470035A98F /* MobileNet.mlmodel in Sources */,
 				0221322A1F2BCA040077DE41 /* AppDelegate.swift in Sources */,
 				0221323E1F2BD5930077DE41 /* GroceryItemTableViewCell.swift in Sources */,

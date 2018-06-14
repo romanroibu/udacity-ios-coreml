@@ -103,7 +103,7 @@ class RecognizerViewController: UIViewController {
         currentPrediction = nil
     }
 
-    private let classifier = MobileNet()
+    private let classifier = Food101Net()
 
     private func classifyFood(image: UIImage) {
 
